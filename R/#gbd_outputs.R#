@@ -1,0 +1,54 @@
+#' Model outputs for GBD
+#'
+#' @param mod simulation model output
+#' @param fp model fixed parameters
+#'
+#' @return A data.frame
+#'
+#' @examples
+#' library(eppasm)
+#'
+#' pjnz <- system.file("extdata/testpjnz", "Botswana2018.PJNZ", package="eppasm")
+#' fp <- prepare_directincid(pjnz)
+#' mod <- simmod(fp)
+#'
+#' @export
+
+get_gbd_outputs <- function(mod, fp) {
+
+  mod <- mod_dimnames(mod, fp$ss)
+  hivp1 <- hivpop_singleage(mod, fp$ss)
+  
+  pop <- as.data.table(as.data.frame.table(mod, responseName = "pop"))
+
+  hiv_deaths <- as.data.table(
+    as.data.frame.table(attr(mod, "hivdeaths"),
+                        responseName = "hiv_deaths"))
+
+  non_hiv_deaths <- as.data.table(
+    as.data.frame.table(attr(mod, "natdeaths"),
+                             responseName = "non_hiv_deaths"))
+  new_hiv <- as.data.table(
+    as.data.frame.table(attr(mod, "infections"),
+                        responseName = "infections"))
+  
+  years <- get_proj_years(fp$ss)
+
+  dim(attr(mod, "hivdeaths"))
+
+  pop_art <- as.data.table(
+    as.data.frame.table(colSums(hivp1$artpop1,,2),
+                        responseName = "artpop")
+  )
+}
+
+v <- read.csv("~/Downloads/spec_example.csv")
+
+fp$asfr
+get_births <- function(mod, fp)
+
+  py <- fp$ss$PROJ_YEARS
+fertpop <- apply(mod[fp$ss$p.fert.idx, fp$ss$f.idx, , c(1, 1:(py-1))] +
+                 mod[fp$ss$p.fert.idx, fp$ss$f.idx, , c(2:py, py)],
+                 c(1, 3), sum)
+  

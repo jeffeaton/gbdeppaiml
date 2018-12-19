@@ -1,0 +1,15 @@
+#' Model outputs for GBD
+#'
+#' @param mod simulation model output
+#' @param fp model fixed parameters
+#'
+#' @return A data.frame
+#'
+#' @export
+
+get_gbd_outputs <- function(mod, fp) {
+
+
+}
+
+v <- read.csv("~/Downloads/spec_example.csv")

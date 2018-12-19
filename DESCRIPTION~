@@ -1,0 +1,16 @@
+Package: gbdeppaiml
+Title: HIV estimation analysis for the Global Burden of Disease Study
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Deepa",
+           family = "Jahagirdar",
+           role = c("aut", "cre"),
+           email = "djahag@uw.edu")
+Description: What the package does (one paragraph).
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    eppasm (>= 0.5.7.2)
+Remotes:  
+    mrc-ide/eppasm
